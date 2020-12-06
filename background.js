@@ -7,6 +7,22 @@
 
 chrome.runtime.onInstalled.addListener(function() {
     console.log("Hello Chrome.");
+    /* Get Date */
+    var today = new Date();
+    var todayStr = today.getFullYear().toString() + today.getMonth().toString() + today.getDate().toString();
+    console.log(todayStr);
+
+    chrome.storage.sync.get(todayStr, function(result) {
+      var searchTimes = result[todayStr];
+      console.log(searchTimes);
+      if(searchTimes) {}
+      else{
+        searchTimes = 0;
+        chrome.storage.sync.set({[todayStr]: searchTimes}, function() {
+            console.log('Search times is set to ' + searchTimes);
+        });
+      }
+    });
 });
 
 
