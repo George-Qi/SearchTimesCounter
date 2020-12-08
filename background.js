@@ -6,11 +6,15 @@
 
 
 chrome.runtime.onInstalled.addListener(function() {
-    console.log("Hello Chrome.");
+    /* Set Service status */
+    chrome.storage.sync.set({'EnableService': true}, function() {});
+    chrome.storage.sync.get('EnableService', function(result) {
+        alert(result['EnableService']);
+    });
+
     /* Get Date */
     var today = new Date();
     var todayStr = today.getFullYear().toString() + today.getMonth().toString() + today.getDate().toString();
-    console.log(todayStr);
 
     chrome.storage.sync.get(todayStr, function(result) {
       var searchTimes = result[todayStr];

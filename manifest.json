@@ -5,6 +5,9 @@
     "manifest_version": 2,
     "permissions": ["storage", "tabs"],
     "options_page": "options.html",
+    "icons": {
+      "192": "./pic/plus_192.png"
+    },
     "background": {
         "scripts": ["background.js"],
         "persistent": false
@@ -15,7 +18,9 @@
     "content_scripts": [
         {
           "matches": [
-            "<all_urls>"
+            "*://www.google.com/*",
+            "*://www.google.com.hk/*",
+            "*://www.google.com.tw/*"
           ],
           "js": ["content.js"]
         }
