@@ -13,7 +13,6 @@ chrome.storage.sync.get(todayStr, function(result){
         counterNode.innerHTML = "<b>Start your first Search NOW!</b>"
     else
         counterNode.innerHTML = "Searched <b>" + searchTimes + "</b> time(s) today.";
-
 });
 
 /* Get Service Flag, if false, return. */

@@ -9,7 +9,7 @@ chrome.runtime.onInstalled.addListener(function() {
     /* Set Service status */
     chrome.storage.sync.set({'EnableService': true}, function() {});
     chrome.storage.sync.get('EnableService', function(result) {
-        alert(result['EnableService']);
+        // alert(result['EnableService']);
     });
 
     /* Get Date */
