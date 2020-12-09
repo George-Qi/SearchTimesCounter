@@ -11,3 +11,16 @@ enable_switch.addEventListener("change", function(event){
 chrome.storage.sync.get('EnableService', function(result){
     enable_switch.checked = result['EnableService'];
 });
+
+
+/* Show Search Number to popup window */
+var numCountainer = document.getElementById('searchNum')
+
+var today = new Date();
+var todayStr = today.getFullYear().toString() + today.getMonth().toString() + today.getDate().toString();
+
+chrome.storage.sync.get(todayStr, function(result){
+    /* render html */
+    var searchTimes = result[todayStr];
+    numCountainer.innerText = searchTimes.toString();
+});

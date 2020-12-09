@@ -8,13 +8,14 @@
 chrome.runtime.onInstalled.addListener(function() {
     /* Set Service status */
     chrome.storage.sync.set({'EnableService': true}, function() {});
-    chrome.storage.sync.get('EnableService', function(result) {
-        // alert(result['EnableService']);
-    });
+    // chrome.storage.sync.get('EnableService', function(result){
+    //     alert(result['EnableService']);
+    // });
 
     /* Get Date */
     var today = new Date();
     var todayStr = today.getFullYear().toString() + today.getMonth().toString() + today.getDate().toString();
+    console.log(todayStr);
 
     chrome.storage.sync.get(todayStr, function(result) {
       var searchTimes = result[todayStr];
@@ -34,7 +35,6 @@ chrome.runtime.onInstalled.addListener(function() {
    refresh will NOT. */
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
   if(changeInfo.url && changeInfo.url.indexOf('google.com/search?') != -1){
-      console.log("User google something.");
       /* Get Date */
       var today = new Date();
       var todayStr = today.getFullYear().toString() + today.getMonth().toString() + today.getDate().toString();
@@ -43,7 +43,7 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
       chrome.storage.sync.get(todayStr, function(result) {
           var searchTimes = result[todayStr];
           console.log(searchTimes);
-          if(searchTimes) {
+          if(searchTimes != null) {
             searchTimes = searchTimes + 1;
           }
           else{
@@ -57,4 +57,6 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
   }
     
 });
+
+
 

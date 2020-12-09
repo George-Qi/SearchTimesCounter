@@ -1,7 +1,7 @@
 {
     "name": "Google Times Counter",
     "version": "0.1",
-    "description": "Remember times of Google",
+    "description": "Remember times of using Google",
     "manifest_version": 2,
     "permissions": ["storage", "tabs"],
     "options_page": "options.html",
